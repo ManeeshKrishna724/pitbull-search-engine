@@ -1,1 +1,1 @@
-web: unicorn google_clone.wsgi
+web: gunicorn google_clone.wsgi
