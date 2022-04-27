@@ -44,7 +44,7 @@ class Scrape:
 
     def normal_search(self):
         results = []
-        searchs = ddg(self.query, region='wt-wt', time=None, max_results=100, save_csv=False)
+        searchs = ddg(self.query, region='wt-wt',safesearch='Off', time=None, max_results=100, save_csv=False)
         
         for search in array(searchs):
             title_n=[search.get('title')]

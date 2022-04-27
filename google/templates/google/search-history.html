@@ -35,7 +35,7 @@
             </div>
             
             <div class="dropdown" style="display: inline;">
-                <button class="btn btn-primary dropbtn">Dropdown</button>
+                <button class="btn btn-primary dropbtn">more</button>
                 <div class="dropdown-content">
                     <a href="{% url 'conformation-page' 'clear-all' %}">clear all</a>
                     {% if not history_status %}
@@ -43,7 +43,6 @@
                     {% else %}
                         <a href="{% url 'conformation-page' 'unfreeze-history' %}">unfreeze history</a>
                     {% endif %}
-                    <a href="#">Link 3</a>
                 </div>
             </div>
             
