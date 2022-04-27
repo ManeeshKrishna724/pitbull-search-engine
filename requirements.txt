@@ -1,3 +1,5 @@
-django
+Django==4.0.3
+django-heroku==0.3.1
+duckduckgo-search==1.5.1
 requests-html
 numpy

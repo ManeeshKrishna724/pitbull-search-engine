@@ -1,1 +1,1 @@
-web: unicorn google_clone.wsgi --log-file -
+web: unicorn google_clone.wsgi
