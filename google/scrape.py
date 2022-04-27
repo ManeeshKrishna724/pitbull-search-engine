@@ -44,7 +44,7 @@ class Scrape:
 
     def normal_search(self):
         results = []
-        searchs = ddg(self.query, region='wt-wt',safesearch='Off', time=None, max_results=100, save_csv=False)
+        searchs = ddg(self.query, region='wt-wt',safesearch='Moderate', time=None, max_results=100, save_csv=False)
         
         for search in array(searchs):
             title_n=[search.get('title')]
@@ -56,7 +56,7 @@ class Scrape:
 
     def news(self,max_results):
         all_news = []
-        search_news = ddg_news(self.query, region='wt-wt', safesearch='Off', time=None, max_results=max_results, save_csv=False)
+        search_news = ddg_news(self.query, region='wt-wt', safesearch='Moderate', time=None, max_results=max_results, save_csv=False)
         for news in search_news:
             date = [news.get('date').split("T")]
             title = [news.get('title')]
