@@ -1,1 +1,1 @@
-web: gunicorn google_clone.wsgi --log-file -
+web: gunicorn google_clone.wsgi --log-file
