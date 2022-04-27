@@ -1,0 +1,48 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+.navbar-brand.mb-0.h1 {
+    align-items: center; 
+    color: white;
+    font-size: 45px;
+}
+
+body {
+    background-color: #212529;
+}
+
+.list-group-item.item.text-white:hover {
+  transition: 0.1s;
+background-color: rgb(86, 92, 97);
+
+}
+.list-group-item.item.text-white {
+  width: 100%;
+  background-color: rgb(47, 44, 44);
+  padding: 20px;
+  
+}
+
+.list-group-item.text-white.item {
+  background-color: rgb(56, 62, 67);
+}
+
+.settings-cont.rounded {
+  margin: auto;
+  width: 50%;
+  margin-top: 5%;
+  background-color: rgb(56, 62, 67);
+
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.sec-center {
+  margin-right: 3%;
+}
+

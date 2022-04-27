@@ -1,0 +1,19 @@
+.grid-container {
+    display: grid;
+    grid-template-areas: "a a";
+    gap: 2px;
+    grid-auto-rows: 100px;
+}
+
+.col {
+    padding: 10px;
+}
+
+.img-url {
+    color: white;
+    text-decoration: none;
+}
+
+.img-url:hover {
+    text-decoration: underline;
+}

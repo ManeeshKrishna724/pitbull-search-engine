@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+{% extends 'google/home.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+
+    {% block content %}
+
+    {% if messages %}
+        {% for msg in messages %}
+
+          <div class="alert alert-warning alert-dismissible fade show" role="alert" style="width: 50%; margin: auto;">
+            <strong>{{ msg }}.</strong>
+            <div class="align-middle">
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          </div>
+
+        {% endfor %}
+      {% endif %}
+    
+    {% if c_mode == 'clear-all' %}
+
+    <div class="card text-white bg-dark mb-3" style="width: 30%; margin: auto; margin-top: 10%; box-shadow: 0 0 40px rgba(8,7,16,0.6);">
+      <div class="card-body" style="margin: auto; background: transparent;">
+        <br>
+        <br>
+        <h5 class="card-title">Are you sure you want to clear all history?</h5>
+        <div class="mt-4">
+          <a href="/settings/history"><button class="btn btn-primary me-5 pe-3 pl-3" style="margin-left: 50px;">No</button></a>
+          <form method="post" class="d-inline">
+              {% csrf_token %}
+              <button name="conform-clear" class="btn btn-primary">Yes I'm sure</button>
+          </form>
+        </div>
+        <br>
+        <br>
+        
+      </div>
+    </div>
+
+    {% elif c_mode == 'freeze-history' %}
+    <div class="card text-white bg-dark mb-3" style="width: 30%; margin: auto; margin-top: 10%; box-shadow: 0 0 40px rgba(8,7,16,0.6);">
+      <div class="card-body" style="margin: auto; background: transparent;">
+        <br>
+        <br>
+        
+          <h5 class="card-title" style="text-align: center;">Are you sure you want to freeze your history?</h5>
+          <div class="mt-4" style="text-align: center;">
+            <a href="{{ request.META.HTTP_REFERER }}"><button class="btn btn-primary me-5 pe-3 pl-3">No</button></a>
+            <form method="post" class="d-inline">
+                {% csrf_token %}
+                <button name="conform-freeze" class="btn btn-primary">Yes I'm sure</button>
+            </form>
+          </div>
+      </div>
+    </div>
+
+    {% elif c_mode == 'unfreeze-history' %}
+    <div class="card text-white bg-dark mb-3" style="width: 30%; margin: auto; margin-top: 10%; box-shadow: 0 0 40px rgba(8,7,16,0.6);">
+      <div class="card-body" style="margin: auto; background: transparent;">
+        <br>
+        <br>
+        <h5 class="card-title">Are you sure you want to unfreeze your history?</h5>
+          <div class="mt-4">
+            <a href="{{ request.META.HTTP_REFERER }}"><button class="btn btn-primary me-5 pe-3 pl-3" style="margin-left: 50px;">No</button></a>
+            <form method="post" class="d-inline">
+                {% csrf_token %}
+                <button name="conform-unfreeze" class="btn btn-primary">Yes I'm sure</button>
+            </form>
+          </div>
+        <br>
+        <br>
+        
+      </div>
+    </div>
+
+
+    {% elif c_mode == 'delete_account' %}
+    <div class="card text-white bg-danger mb-3" style="width: 40%; margin: auto; margin-top: 10%; box-shadow: 0 0 40px rgba(8,7,16,0.6);">
+        
+        <div class="card-header">Warning</div>
+        <br>
+        <p style="margin-left: 10px;">Note: Deleting your account will also delete all of your data.</p>
+        <div class="card-body">
+          <h5 class="card-title">Enter your password to continue.</h5>
+          <div class="mb-3">
+            <form method="post" class="d-inline">
+                {% csrf_token %}
+                <input name="user_password" placeholder="password" type="password" class="form-control" id="exampleInputPassword1">
+                <div class="mt-4">
+                    <a href="/" style="margin-left: 28%;"><button class="btn btn-success pe-3 pl-3" type="button">Go Back</button></a>
+                    <button style="margin-left: 40px;" name="{{ c_mode }}" class="btn btn-dark">Delete Account</button>
+                </div>
+            </form>
+          </div>
+          
+          <br>
+        </div>
+      </div>
+
+    {% else %}
+
+    <div class="card text-white bg-dark mb-3" style="width: 30%; margin: auto; margin-top: 10%; box-shadow: 0 0 40px rgba(8,7,16,0.6);">
+        <div class="card-body" style="margin: auto; background: transparent;">
+          <br>
+          <br>
+          <h5 class="card-title">Are you sure you want to logout?</h5>
+          <div class="mt-4">
+            <a href="/"><button class="btn btn-primary me-5 pe-3 pl-3" style="margin-left: 50px;">No</button></a>
+            <form method="post" class="d-inline">
+                {% csrf_token %}
+                <button name="{{ c_mode }}" class="btn btn-primary">Yes I'm sure</button>
+            </form>
+          </div>
+          <br>
+          <br>
+          
+        </div>
+      </div>
+    {% endif %}
+
+    {% endblock %}
+    
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Home{% endblock %}</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/home.css' %}">
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <h1 class="navbar-brand mb-0 h1">PITBULL</h1>          
+      {% include 'google/icon.html' %}
+    
+    </div>
+  </nav>
+
+    <div class="p-3 mb-2 bg-dark text-white">
+    
+
+      <hr>
+      {% block content %}
+      {% if messages %}
+        {% for msg in messages %}
+
+          <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 50%; margin: auto;">
+            <strong>{{ msg }}.</strong>
+            <div class="align-middle">
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          </div>
+
+        {% endfor %}
+      {% endif %}
+      <div class="container-fluid" style="margin: auto; margin-top: 10%; width: 50%;">
+          <form class="d-flex" method="post">
+            {% csrf_token %}
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" autocomplete="off" name="search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+      </div>
+        <div class="row me-3 ml-3" style="margin-top: 15%;">
+          {% for item in news %}
+          <div class="col-xs-6 col-md-4" style="margin-bottom: 3%;">
+            <div class="shadow-lg p-3 rounded" style="height: 100%;">
+              <img src="{{ item.4 }}" class="card-img-top">
+              <div class="card-body">
+                <a class="card-title" href="{{ item.3 }}" style="text-decoration: none;"><h5>{{item.1}}</h5></a>
+                <p style="color: white">{{item.2}}</p>
+                      <p>{{ item.0.1 }}<br>{{ item.0.0 }}</p>
+              </div>
+            </div>
+          </div>
+      {% endfor %}
+        </div>
+
+      {% endblock %}
+    </div>
+
+</body>
+</html>

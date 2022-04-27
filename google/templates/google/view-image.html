@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" style="height: 100%;">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body style="margin: 0px; background: #0e0e0e; height: 100%">
+    <div class="container">
+
+        <img class="img-thumbnail" style="display: block; -webkit-user-select: none;margin: auto;cursor: zoom-in; background-color: hsl(0, 0%, 90%);transition: background-color 300ms;margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);" width="514" height="745" src="{{jpg}}">
+
+        <div class="icon-div" style="position: absolute;
+        right:25%;
+        top: 3%;
+        padding: 10px;">
+            <form action="{{ request.META.HTTP_REFERER }}">
+                {% csrf_token %}
+                <input name="close" type="image" class="x-icon" src="{% static 'img/x.svg' %}">
+            </form>
+
+        </div>
+
+    </div>
+</body>
+</html>

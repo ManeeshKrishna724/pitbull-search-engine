@@ -1,0 +1,30 @@
+{% extends 'google/home.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  {% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}settings{% endblock %}</title>
+</head>
+<body>
+    
+
+    <div class="settings-cont rounded">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item text-white item head"><strong>{{ user }}</strong><br>{{ user.email }}</li>
+        <a href="{% url 'search-history' %}" class="list-group-item item text-white"> Search History </a>
+        <a href="{% url 'conformation-page' 'logout' %}" class="list-group-item item text-white"> Logout </a>
+        <a href="{% url 'change-password' %}" class="list-group-item item text-white"> Change Password </a>
+        <a href="{% url 'conformation-page' 'delete_account' %}" class="list-group-item item text-white"> Delete Account </a>
+
+      </ul>
+  
+    </div>
+
+    
+</body>
+</html>
+{% endblock %}

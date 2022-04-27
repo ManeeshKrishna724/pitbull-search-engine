@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        {% if request.path == '/' %}
+            <div class="sec-center">
+            <a href="{% url 'settings-page' %}">
+                
+                <img src="{% static 'img/settings.svg' %}" style="color: white;">
+            </a>
+            </div>
+        {% elif 'search' in request.path %}
+
+        <div class="sec-center" style="margin-right: 20px;">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'img/home.svg' %}" style="color: white;">
+            </a>
+        </div>
+
+        <div>
+            <a href="{% url 'settings-page' %}">
+                
+                <img src="{% static 'img/settings.svg' %}" style="color: white;">
+            </a>
+        </div>
+
+
+        {% else %}
+
+        <div class="sec-center">
+          <a href="{% url 'home' %}">
+              <img src="{% static 'img/home.svg' %}" style="color: white;">
+          </a>
+          </div>
+        {% endif %}
+
+      {% endif %}
+</body>
+</html>
