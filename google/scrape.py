@@ -1,7 +1,6 @@
-import imghdr
 from requests_html import HTMLSession
 from json import loads
-from numpy import array,concatenate,nditer
+from numpy import array
 
 #https://duckduckgo.com/i.js?q=millie%20bobby%20brown&o=json&s=0&p=1&u=bing&f=,,,,,&l=us-en&vqd=3-19084058480156129700725331011721974472-105276110364342771415585942728392589116
 
