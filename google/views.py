@@ -22,17 +22,18 @@ def mail(message,recipient_list):
     'From PITBULL',
     message,
     settings.EMAIL_HOST_USER,
-    recipient_list
+    recipient_list,
     )
-    email.fail_silently=True
+    
     email.send()
+    return email
     """send_mail(
         subject='From PITBULL',
         message=message,
         from_email=settings.EMAIL_HOST_USER,
         recipient_list=recipient_list,
     )"""
-    return
+    
 
 
 
@@ -197,7 +198,8 @@ def register_page(response):
 
         if form.is_valid() and email_exists_in_db: 
             try:
-                mail(f"Hey {first_name} just wanna say thank you for registering to pitbull.\n\n      -From Owner.",[user_email])
+                m = mail(f"Hey {first_name} just wanna say thank you for registering to pitbull.\n\n      -From Owner.",[user_email])
+                print(m)
             except:
                 email_exists=False
                 messages.error(response,"The email you entered is invalid or does'nt exists")
