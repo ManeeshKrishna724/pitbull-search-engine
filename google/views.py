@@ -24,7 +24,7 @@ def mail(message,recipient_list):
     settings.EMAIL_HOST_USER,
     recipient_list
     )
-    email.fail_silently=False
+    email.fail_silently=True
     email.send()
     """send_mail(
         subject='From PITBULL',
