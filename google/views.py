@@ -192,7 +192,7 @@ def register_page(response):
             messages.error(response,'The email you entered is already in use')
             email_exists_in_db = False
 
-        
+               
 
 
         if form.is_valid() and email_exists_in_db: 
@@ -208,10 +208,14 @@ def register_page(response):
                 user_ins = User.objects.get(id=user.id)
                 FreezeHistory.objects.create(user=user_ins,freeze_history=False)
                 messages.success(response,f'Hey {first_name} welcome to PITBULL')
-            
-            return redirect('home')
+                return redirect('home')
 
         else:
+            try:
+                int(password_1)
+                messages.error(response,'Password cannot contain only numbers')
+            except:
+                pass
             #Checking if the password and conformation password matches.
 
             """The reason why I put this here instead of putiing this with other error checker is because django will 
@@ -230,11 +234,9 @@ def register_page(response):
 
             elif len(password_1) < 8:
                 messages.error(response,'Password should atleast contain 8 characters')
-            try:
-                int(password_1)
-                messages.error(response,'Password cannot contain only numbers')
-            except:
-                pass
+            
+            else:
+                messages.error(response,"Password can't be similar to username or other personal information")
 
 
 
