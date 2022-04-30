@@ -15,6 +15,9 @@ from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 
+
+
+
 # Create your views here.
 
 def mail(message,recipient_list):
@@ -25,8 +28,8 @@ def mail(message,recipient_list):
     recipient_list,
     )
     
-    email.send()
-    return email
+    email.send(fail_silently=False)
+    
     """send_mail(
         subject='From PITBULL',
         message=message,
@@ -178,7 +181,6 @@ def search_result_videos(response,q,page):
 def register_page(response):
     form = CreateUserForm()
     email_exists_in_db = True
-    email_exists = True
 
 
     if response.method == 'POST':
@@ -197,20 +199,15 @@ def register_page(response):
 
 
         if form.is_valid() and email_exists_in_db: 
-            try:
-                m = mail(f"Hey {first_name} just wanna say thank you for registering to pitbull.\n\n      -From Owner.",[user_email])
-                print(m)
-            except:
-                email_exists=False
-                messages.error(response,"The email you entered is invalid or does'nt exists")
             
-            if email_exists:
-                user = form.save()
-                login(response,user)
-                user_ins = User.objects.get(id=user.id)
-                FreezeHistory.objects.create(user=user_ins,freeze_history=False)
-                messages.success(response,f'Hey {first_name} welcome to PITBULL')
-                return redirect('home')
+            user = form.save()
+            login(response,user)
+            mail(f"Hey {first_name} just wanna say thank you for registering to pitbull.\n\n      -From Owner.",[user_email])
+            user_ins = User.objects.get(id=user.id)
+            FreezeHistory.objects.create(user=user_ins,freeze_history=False)
+            messages.success(response,f'Hey {first_name} welcome to PITBULL')
+            return redirect('home')
+           
 
         else:
             try:
