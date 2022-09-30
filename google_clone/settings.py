@@ -139,6 +139,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'pitbullbrowser724@gmail.com'
-EMAIL_HOST_PASSWORD = 'pitbull_7_2_4'
+EMAIL_HOST_PASSWORD = 'dqdqzmnpyspadudw'
 
 django_heroku.settings(locals())
