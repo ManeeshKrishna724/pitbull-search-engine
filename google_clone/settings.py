@@ -140,4 +140,3 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'pitbullbrowser724@gmail.com'
 EMAIL_HOST_PASSWORD = 'dqdqzmnpyspadudw'
 
-django_heroku.settings(locals())
