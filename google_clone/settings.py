@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-5ylu+$%9q6aj#$q6=)3u+y8i*^(u(6y4vemclt%aruvdc-fyg7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pitbull-engine.herokuapp.com']
+ALLOWED_HOSTS = ['pitbull-engine.herokuapp.com','192.168.1.7','192.168.43.150']
 
 
 # Application definition

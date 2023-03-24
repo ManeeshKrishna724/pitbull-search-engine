@@ -1,50 +1,49 @@
 {% extends 'google/home.html' %}
 <!DOCTYPE html>
-{% load static %}
 <html lang="en">
 <head>
-    {% block content %}
-
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Login{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/login.css' %}">
+	{% block content %}
+	{% load static %}
+	<title>Login V16</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="{% static 'styles/login.css' %}">
+<!--===============================================================================================-->
 </head>
 <body>
-  {% if messages %}
-  {% for msg in messages %}
+	
+	{% if messages %}
+	{% for msg in messages %}
+  
+	  <div class="alert alert-warning alert-dismissible fade show" role="alert" style="width: auto; margin: auto; overflow: visible;">
+		<strong>{{ msg }}.</strong>
+		<div class="align-middle">
+		  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
 
-    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="width: 50%; margin: auto;">
-      <strong>{{ msg }}.</strong>
-      <div class="align-middle">
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-    </div>
+	  </div>
+  
+	{% endfor %}
+	{% endif %}
+	
+	
+	<form method="post">
+		{% csrf_token %}
+	<div class="login-block">
+		<h1>Login</h1>
+		<input type="text" value="" placeholder="Username" id="username" name="username"/>
+		<input type="password" value="" placeholder="Password" id="password" name="password"/>
+		<button type="submit">Submit</button>
+		<a class="sign-up-link" href="{% url 'register-page' %}" >Sign Up</a><br>
+		<a class="forgot-p-link" href="{% url 'change-password' %}" >Forgot Password?</a>
+	</div>
+	
+	</form>
+	
 
-  {% endfor %}
-  {% endif %}
-    
-    <form method="post" style="height: 500; width: 400;">
-        {% csrf_token %}
-          <h3>Login Here</h3>
-    
-          <label for="username" class="plc-label">Username</label>
-          <input type="text" id="username" name="username">
-    
-          
-          <label for="password" class="plc-label">Password</label>
-          <input type="password" id="password" name="password">
-          
-    
-          <button class="btn btn-light submit-button">Log In</button>
 
-        <div class="font">
-          <a href="{% url 'register-page' %}">Signup</a><br>
-          <a href="{% url 'change-password' %}">Forgot Password?</a>
-        </div>
-      </form>
-
-    {% endblock %}
+	{% endblock %}
 </body>
 </html>

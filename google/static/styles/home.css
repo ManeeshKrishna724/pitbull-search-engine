@@ -3,12 +3,12 @@
 
 .navbar-brand.mb-0.h1 {
     align-items: center; 
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 45px;
 }
 
 body {
-    background-color: #212529;
+    background-color: #ffffff;
 }
 
 .list-group-item.item.text-white:hover {
@@ -44,5 +44,30 @@ background-color: rgb(86, 92, 97);
 
 .sec-center {
   margin-right: 3%;
+}
+
+body, html {
+  height: 100%;
+  color: #777;
+  line-height: 1.8;
+}
+
+/* Create a Parallax Effect */
+
+
+/* First image (Logo. Full height) */
+
+
+
+
+.w3-wide {letter-spacing: 10px;}
+.w3-hover-opacity {cursor: pointer;}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1600px) {
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: scroll;
+    min-height: 400px;
+  }
 }
 

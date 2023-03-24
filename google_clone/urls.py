@@ -24,5 +24,5 @@ urlpatterns = [
     path('',include("google.urls")),
     path('password_reset_confirm/<str:uidb64>/<str:token>',auth_view.PasswordResetConfirmView.as_view(template_name='change-password/new-password.html'),name='password_reset_confirm'),
     path('password_reset_done',auth_view.PasswordResetDoneView.as_view(template_name='change-password/email-sent.html'),name="password_reset_done"),
-    path('password_reset_complete',auth_view.PasswordResetCompleteView.as_view(template_name='change-password/reset-complete.html'),name="password_reset_complete")
+    path('password_reset_complete',auth_view.PasswordResetCompleteView.as_view(template_name='change-password/password-reset-complete.html'),name="password_reset_complete")
 ]

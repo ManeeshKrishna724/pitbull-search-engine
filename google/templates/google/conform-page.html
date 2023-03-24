@@ -14,7 +14,7 @@
     {% if messages %}
         {% for msg in messages %}
 
-          <div class="alert alert-warning alert-dismissible fade show" role="alert" style="width: 50%; margin: auto;">
+          <div class="alert alert-warning alert-dismissible fade show" role="alert" style="width: 100%; margin: auto;">
             <strong>{{ msg }}.</strong>
             <div class="align-middle">
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -26,7 +26,7 @@
     
     {% if c_mode == 'clear-all' %}
 
-    <div class="card text-white bg-dark mb-3" style="width: 30%; margin: auto; margin-top: 10%; box-shadow: 0 0 40px rgba(8,7,16,0.6);">
+    <div class="card text-white bg-dark mb-3" style="width: 80%; margin: auto; box-shadow: 0 0 40px rgba(8,7,16,0.6);position: relative;">
       <div class="card-body" style="margin: auto; background: transparent;">
         <br>
         <br>
@@ -45,7 +45,7 @@
     </div>
 
     {% elif c_mode == 'freeze-history' %}
-    <div class="card text-white bg-dark mb-3" style="width: 30%; margin: auto; margin-top: 10%; box-shadow: 0 0 40px rgba(8,7,16,0.6);">
+    <div class="card text-white bg-dark mb-3" style="width: 80%; margin: auto; box-shadow: 0 0 40px rgba(8,7,16,0.6);position: relative;">
       <div class="card-body" style="margin: auto; background: transparent;">
         <br>
         <br>
@@ -62,13 +62,13 @@
     </div>
 
     {% elif c_mode == 'unfreeze-history' %}
-    <div class="card text-white bg-dark mb-3" style="width: 30%; margin: auto; margin-top: 10%; box-shadow: 0 0 40px rgba(8,7,16,0.6);">
-      <div class="card-body" style="margin: auto; background: transparent;">
+    <div class="card mb-3" style="width: 80%; margin: auto; box-shadow: 0 0 40px rgba(8,7,16,0.6);position: relative;">
+      <div class="card-body" style="background: transparent;">
         <br>
         <br>
         <h5 class="card-title">Are you sure you want to unfreeze your history?</h5>
-          <div class="mt-4">
-            <a href="{{ request.META.HTTP_REFERER }}"><button class="btn btn-primary me-5 pe-3 pl-3" style="margin-left: 50px;">No</button></a>
+          <div class="mt-4" style="margin: auto;">
+            <a href="{{ request.META.HTTP_REFERER }}"><button class="btn btn-primary">No</button></a>
             <form method="post" class="d-inline">
                 {% csrf_token %}
                 <button name="conform-unfreeze" class="btn btn-primary">Yes I'm sure</button>
@@ -82,7 +82,7 @@
 
 
     {% elif c_mode == 'delete_account' %}
-    <div class="card text-white bg-danger mb-3" style="width: 40%; margin: auto; margin-top: 10%; box-shadow: 0 0 40px rgba(8,7,16,0.6);">
+    <div class="card text-white bg-danger mb-3" style="width: 80%; margin: auto; box-shadow: 0 0 40px rgba(8,7,16,0.6);position: relative;">
         
         <div class="card-header">Warning</div>
         <br>
@@ -106,7 +106,7 @@
 
     {% else %}
 
-    <div class="card text-white bg-dark mb-3" style="width: 30%; margin: auto; margin-top: 10%; box-shadow: 0 0 40px rgba(8,7,16,0.6);">
+    <div class="card text-white bg-dark mb-3" style="width: 80%; margin: auto; box-shadow: 0 0 40px rgba(8,7,16,0.6);position: relative;">
         <div class="card-body" style="margin: auto; background: transparent;">
           <br>
           <br>

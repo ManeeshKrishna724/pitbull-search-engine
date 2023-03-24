@@ -14,6 +14,8 @@
 
 </head>
 <body>
+
+
     {% if messages %}
         {% for msg in messages %}
 
@@ -30,19 +32,25 @@
 
     <div class="shadow-lg p-3 rounded cont">
         <div class="card-header">
-            <div class="details">    
-                <p><strong>{{ user }}</strong><br>{{ user.email }}</p>
-            </div>
             
-            <div class="dropdown" style="display: inline;">
-                <button class="btn btn-primary dropbtn">more</button>
+            
+            <div class="dropdown" style="width: 100%;">
+                <div style="display: flex;flex-direction: row;position: relative;">
+                    <div class="details">    
+                        <p><strong>{{ user }}</strong><br>{{ user.email }}</p>
+                    </div>
+                    <img src="{% static 'img/dots.svg' %}" class="dropbtn">
+                </div>
                 <div class="dropdown-content">
                     <a href="{% url 'conformation-page' 'clear-all' %}">clear all</a>
-                    {% if not history_status %}
-                        <a href="{% url 'conformation-page' 'freeze-history' %}">freeze history</a>
+                    
+                    {% if history_status %}
+                        <a href="{% url 'conformation-page' 'unfreeze-history' %}">Unfreeze History</a>
                     {% else %}
-                        <a href="{% url 'conformation-page' 'unfreeze-history' %}">unfreeze history</a>
+                        <a href="{% url 'conformation-page' 'freeze-history' %}">Freeze History</a>
                     {% endif %}
+
+
                 </div>
             </div>
             
@@ -50,13 +58,13 @@
                
         </div>
 
-        <ul class="list-group list-group-flush">
+        <ul class="list-group list-group-flush" style="width:100%;">
 
             {% for search in searchs %}
-                <li class="list-group-item">{{search.date}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ search }}
+                <li style="overflow:hidden;" class="list-group-item">{{search.date|timesince}} ago &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ search }}
                     <form method="post">
                         {% csrf_token %}
-                        <input name="{{ search.id }}" type="image" class="trash" src="{% static 'img/trash.svg' %}">
+                        <input name="{{ search.id }}" type="image" class="trash" src="{% static 'img/x.svg' %}">
                     </form>
                 </li>
             {% endfor %}

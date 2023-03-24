@@ -1,11 +1,6 @@
+
 .cont {
-    margin: 5% 10% 10% 10%;
-}
-.card,.cont,.list-group-item {
-
-    background-color: rgb(56, 62, 67);
-    color: white;
-
+    margin: 20px;
 }
 
 .list-group-item {
@@ -13,14 +8,26 @@
 
 }
 
+.dropbtn {
+    position: absolute;
+    left:86%;
+}
+
+.trash {
+    position: absolute;
+    top : 10px;
+}
+
 .list-group-item:hover {
     transition: 0.1s;
-    background-color: rgb(86, 92, 97);
+    background-color: rgb(234, 234, 234);
 }
 
 .trash {
     margin-left: 90%;
 }
+
+
 .dropdown-content {
     display: none;
     position: absolute;

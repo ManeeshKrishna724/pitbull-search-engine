@@ -14,16 +14,17 @@
 <body>
     <div class="row">
         {% for video in videos %}
+        
             <div class="col-xs-6 col-md-4" style="margin-bottom: 3%;">
                 <div class="shadow-lg p-3 rounded" style="height: 100%;">
                     <a href="{{ video.0 }}">
                         <img class="card-img-top" src="{{ video.1 }}">
+                        <p style="z-index: 1;background-color: black;color: white;width: fit-content;position:relative;bottom:25px; left:88%">{{ video.3 }}</p>
                     </a>
 
                     <div class="card-body">
                         <a href="{{ video.0 }}" style="text-decoration: none;"><h5>{{ video.2 }}...</h5></a>
-                        <p>{{video.3}} <br><br> {{ video.4 }}<br>{{ video.5 }}</p>
-                        
+                        <p style="color: black;"><br><br> {{ video.4 }}<br>{{ video.5 }}</p>  
                     </div>
 
                 </div>
@@ -37,14 +38,12 @@
                 <li class="page-item">
                     <a class="page-link" href="?page={{ objects.previous_page_number }}" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">Previous</span>
                     </a>
 
             {% else %}
                 <li class="page-item disabled">
                     <a class="page-link" href="" aria-label="Next">
                         <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">Previous</span>
                     </a>
 
             {% endif %}
@@ -60,13 +59,13 @@
                 {% if objects.has_next %}
                     <li class="page-item">
                         <a class="page-link" href="?page={{ objects.next_page_number }}" aria-label="Next">
-                            <span class="sr-only">Next</span>
+                            
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                 {% else %}
                     <li class="page-item disabled">
                         <a class="page-link" href="" aria-label="Next">
-                            <span class="sr-only">Next</span>
+                        
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                 {% endif %}

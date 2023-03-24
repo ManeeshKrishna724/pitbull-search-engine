@@ -1,4 +1,4 @@
-{% extends 'google/home.html' %}
+{% extends 'google/main.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -7,18 +7,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/home.css' %}">
     <title>{% block title %}settings{% endblock %}</title>
 </head>
 <body>
     
 
-    <div class="settings-cont rounded">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item text-white item head"><strong>{{ user }}</strong><br>{{ user.email }}</li>
-        <a href="{% url 'search-history' %}" class="list-group-item item text-white"> Search History </a>
-        <a href="{% url 'conformation-page' 'logout' %}" class="list-group-item item text-white"> Logout </a>
-        <a href="{% url 'change-password' %}" class="list-group-item item text-white"> Change Password </a>
-        <a href="{% url 'conformation-page' 'delete_account' %}" class="list-group-item item text-white"> Delete Account </a>
+    <div class="settings-cont rounded" style="width: 100%; margin-left: 30px;margin-right: 30px;">
+      <ul class="list-group">
+        <li class="list-group-item item head"><strong>{{ user }}</strong><br>{{ user.email }}</li>
+        <a href="{% url 'search-history' %}" class="list-group-item item"> Search History </a>
+        <a href="{% url 'conformation-page' 'logout' %}" class="list-group-item item"> Logout </a>
+        <a href="{% url 'change-password' %}" class="list-group-item item"> Change Password </a>
+        <a href="{% url 'conformation-page' 'delete_account' %}" class="list-group-item item"> Delete Account </a>
 
       </ul>
   

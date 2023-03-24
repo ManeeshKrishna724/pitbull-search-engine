@@ -14,6 +14,7 @@ from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
+from datetime import datetime
 
 
 
@@ -41,8 +42,10 @@ def mail(message,recipient_list):
 
 
 def save_search(text,user):
-    fh = FreezeHistory.objects.get(user_id=user.id)
-    if not fh.freeze_history:
+    
+    fh = FreezeHistory.objects.get(user_id=user.id).freeze_history
+        
+    if not fh:
         Search.objects.create(user=user,search=text)
         return
 
@@ -51,6 +54,7 @@ def save_search(text,user):
 def home(response):
     page_home = False
     
+
     if response.path == '/' or 'search/' in response.path:
         page_home = True
 
@@ -63,7 +67,7 @@ def home(response):
             return redirect('search-result',q=searched_text)
 
     news = Scrape('Trending').news(10)
-
+    
     return render(response,'google/home.html',{
     'page_home':page_home,
     'news':news,
@@ -270,8 +274,9 @@ def settings_page(response):
 @login_required(login_url='login-page')
 def conformation_page(response,obj):
     
-
+    print(obj)
     if response.method == 'POST':
+        
         if 'logout' in response.POST:
             logout(response)
             return redirect('login-page')
@@ -323,6 +328,7 @@ def search_history(response):
     history_status = FreezeHistory.objects.get(user_id = response.user.id).freeze_history
     if response.method == 'POST':
         search_id = response.POST.items()
+        
         for key,value in search_id:
             if key != 'csrfmiddlewaretoken':
                 search_id = key.replace('.x','')

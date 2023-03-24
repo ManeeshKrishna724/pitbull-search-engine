@@ -1,6 +1,7 @@
 from requests_html import HTMLSession
 from json import loads
 from numpy import array
+from datetime import datetime
 
 #https://duckduckgo.com/i.js?q=millie%20bobby%20brown&o=json&s=0&p=1&u=bing&f=,,,,,&l=us-en&vqd=3-19084058480156129700725331011721974472-105276110364342771415585942728392589116
 
@@ -28,11 +29,11 @@ class Scrape:
                     img_a = loads(img_element.find('a.iusc',first=True).attrs['m'])
                     jpg = [ img_a.get('murl') ]
                     img_url = [ img_a.get('purl') ]
-                    img_title = [ img_a.get('t') ]
                     thumbnail = [ img_element.find('img.mimg',first=True).attrs['src'] ]
-                    all_items = jpg+img_url+img_title+thumbnail
+                    all_items = jpg+img_url+thumbnail
 
                     items.append(all_items)
+                    
                 except:
                     pass
 
@@ -58,7 +59,9 @@ class Scrape:
         all_news = []
         search_news = ddg_news(self.query, region='wt-wt', safesearch='Moderate', time=None, max_results=max_results, save_csv=False)
         for news in search_news:
-            date = [news.get('date').split("T")]
+            
+            date = [datetime.strptime(news.get('date').replace("T"," "),"%Y-%m-%d %H:%M:%S")]
+            
             title = [news.get('title')]
             body = [news.get('body')]
             url = [news.get('url')]
@@ -94,7 +97,7 @@ class Scrape:
                 title_vid = [ data.get('vt')[:40] ]
 
                 text_div =  video.find('div.mc_vtvc_meta',first=True)
-                posted_time = [ text_div.find('span.meta_pd_content',first=True).text ]
+                posted_time = [ text_div.find('span.meta_pd_content',first=True).text ] 
                 publisher = [ text_div.find('div.mc_vtvc_meta_row')[1].find('span',first=True).text ]
                 all_item = url+img+title_vid+duration+posted_time+publisher
             
