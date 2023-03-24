@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-5ylu+$%9q6aj#$q6=)3u+y8i*^(u(6y4vemclt%aruvdc-fyg7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://web-production-89cc.up.railway.app/','pitbull-search-engine-production.up.railway.app']
+ALLOWED_HOSTS = ['https://web-production-89cc.up.railway.app/','https://pitbull-search-engine-production.up.railway.app']
 
 
 # Application definition
